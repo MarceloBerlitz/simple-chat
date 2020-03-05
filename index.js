@@ -11,7 +11,7 @@ io.on('connection', socket => {
 
 app.use(express.static('public'));
 
-const port = 3008;
+const port = 2999;
 server.listen(port, () => {
     console.log(`listen on port ${port}`)
 });

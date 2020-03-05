@@ -1,0 +1,24 @@
+#chat {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    background: lightgray;
+    visibility: hidden;
+}
+
+#messages {
+    width: 100%;
+    height: 225px;
+}
+
+#message-input {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+#send-button {
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}

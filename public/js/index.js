@@ -4,7 +4,8 @@ let name;
 let socket;
 
 const addMessage = message => {
-    document.getElementById('messages').innerHTML = document.getElementById('messages').innerHTML + `<p>${message.sender}: ${message.message}</p>`;
+    document.getElementById('messages').innerHTML = document.getElementById('messages').innerHTML +
+        `<span class="message">${message.sender}: ${message.message}</span><br/>`;
 };
 
 document.getElementById('set-name-button')

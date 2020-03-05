@@ -1,21 +1,32 @@
 'use strict';
 
 let name;
+let color;
 let socket;
+
+const colors = [
+    '#FF87A2',
+    '#B66BE8',
+    '#839EFF',
+    '#6BE8E6',
+    '#6BE8A6',
+    '#FFB77A',
+];
 
 function addMessage(message) {
     document.getElementById('messages').innerHTML = document.getElementById('messages').innerHTML +
-        `<span class="message">${message.sender}: ${message.message}</span><br/>`;
+        `<span class="sender" style="color: ${message.color}">${message.sender}:</span><span class="message">${message.message}</span><br/>`;
 }
 
 function confirmName() {
     name = document.getElementById('name-input').value;
+    color = colors[Math.floor(Math.random() * colors.length)];
     if (name === '') {
         alert('Nome inválido.');
         return;
     }
 
-    socket = io('http://desenvvar36-lnx:2999');
+    socket = io(':2999');
 
     socket.emit('name', name);
     socket.on('connect', goToChat);
@@ -44,7 +55,7 @@ function sendMessage() {
     const input = document.getElementById('message-input');
     const message = input.value;
     if (message !== '') {
-        const wsMessage = {sender: name, message: message};
+        const wsMessage = {sender: name, message: message, color: color};
         addMessage(wsMessage);
         socket.emit('message', JSON.stringify(wsMessage));
         input.value = '';
